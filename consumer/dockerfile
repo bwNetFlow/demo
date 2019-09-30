@@ -1,0 +1,4 @@
+FROM alpine:latest
+COPY consumer /
+ENV KAFKA_BROKERS="kafka01.bwnf.belwue.de:9093,kafka02.bwnf.belwue.de:9093,kafka03.bwnf.belwue.de:9093,kafka03.bwnf.belwue.de:9094,kafka05.bwnf.belwue.de:9093"
+ENTRYPOINT /consumer --kafka.brokers $KAFKA_BROKERS --kafka.topic $KAFKA_TOPIC --kafka.consumer_group $KAFKA_CONSUMER_GROUP --kafka.user $KAFKA_USER --kafka.pass $KAFKA_PASS

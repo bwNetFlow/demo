@@ -1,0 +1,29 @@
+services:
+    - docker:dind
+
+stages:
+    - build
+    - pack
+
+go-build:
+    image: golang:1.9
+    stage: build
+    script: 
+        - env
+        - go get -d -v ./...
+        - go build -o consumer -v
+    artifacts:
+        paths:
+            - consumer
+      
+docker-image:
+    image: docker:latest
+    stage: pack
+    script:
+        - TS=$(date +%Y%m%d%H%M)
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker build -t $CI_REGISTRY_IMAGE:$TS .
+        - docker push $CI_REGISTRY_IMAGE:$TS
+        - docker tag $CI_REGISTRY_IMAGE:$TS $CI_REGISTRY_IMAGE:latest
+        - docker push $CI_REGISTRY_IMAGE:latest
+      

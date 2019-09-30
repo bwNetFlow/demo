@@ -1,0 +1,39 @@
+version: '2'
+services:
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      GF_LOG_LEVEL: 'error'
+      GF_DASHBOARDS_JSON_ENABLED: 'true'
+      GF_USERS_LOGIN_HINT: demo
+      GF_USERS_PASSWORD_HINT: demo
+      GF_SECURITY_ADMIN_USER: demo
+      GF_SECURITY_ADMIN_PASSWORD: demo
+      GF_SECURITY_SECRET_KEY: secretsecret333
+      GF_INSTALL_PLUGINS: grafana-worldmap-panel,grafana-piechart-panel
+    volumes:
+    - ./grafana/grafana-provisioning/:/etc/grafana/provisioning
+    - ./grafana/dashboards/:/var/lib/grafana/dashboards
+    ports:
+    - 3000:3000/tcp
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+    - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+    - 9090:9090/tcp
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --storage.tsdb.path=/prometheus
+    - --web.console.libraries=/usr/share/prometheus/console_libraries
+    - --web.console.templates=/usr/share/prometheus/consoles
+    - --storage.tsdb.retention.time=2h
+    - --log.level=warn
+
+  consumer:
+    image: bwnetflow:latest
+    env_file:
+      - .kafka_auth.env # TODO: follow the instructions in kafka_auth.env
+    ports:
+    - 8080:8080/tcp
