@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1569241268291,
+  "iteration": 1571746179775,
   "links": [],
   "panels": [
     {
@@ -86,6 +86,8 @@
         "max": true,
         "min": true,
         "show": true,
+        "sort": "max",
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -95,17 +97,22 @@
       "options": {
         "dataLinks": []
       },
-      "percentage": true,
+      "percentage": false,
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "Incoming",
+          "transform": "negative-Y"
+        }
+      ],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (direction) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (direction) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
           "legendFormat": "{{ direction }}",
           "refId": "A"
         }
@@ -114,7 +121,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Split by Direction",
+      "title": "Up- and Download",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -134,8 +141,8 @@
           "format": "bps",
           "label": null,
           "logBase": 1,
-          "max": "100.01",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
@@ -189,11 +196,11 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (ipversion) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (ipversion) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
           "legendFormat": "{{ ipversion }}",
           "refId": "A"
         }
@@ -202,7 +209,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Split by IP Version",
+      "title": "Traffic by IP Version",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -221,8 +228,8 @@
           "format": "bps",
           "label": null,
           "logBase": 1,
-          "max": "100.01",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
@@ -270,17 +277,17 @@
       "options": {
         "dataLinks": []
       },
-      "percentage": true,
+      "percentage": false,
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (protoname) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (protoname) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
           "legendFormat": "{{ protoname }}",
           "refId": "A"
         }
@@ -289,7 +296,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Split by Protocol",
+      "title": "Traffic by Protocol",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -308,12 +315,12 @@
           "format": "bps",
           "label": null,
           "logBase": 1,
-          "max": "100.01",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
-          "format": "short",
+          "format": "bps",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -366,11 +373,11 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (application) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (application) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
           "legendFormat": "{{ application }}",
           "refId": "A"
         }
@@ -379,7 +386,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Split by Application",
+      "title": "Traffic by Application",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -398,8 +405,8 @@
           "format": "bps",
           "label": null,
           "logBase": 1,
-          "max": "100.01",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
@@ -456,11 +463,11 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (router) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (router) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
           "legendFormat": "{{ router }}",
           "refId": "A"
         }
@@ -469,7 +476,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Split by Router",
+      "title": "Traffic by Router",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -489,8 +496,8 @@
           "format": "bps",
           "label": null,
           "logBase": 1,
-          "max": "100.01",
-          "min": "0",
+          "max": null,
+          "min": null,
           "show": true
         },
         {
@@ -544,6 +551,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -598,7 +606,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -626,7 +633,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -654,6 +660,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -708,6 +715,7 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
           "value": [
             "$__all"

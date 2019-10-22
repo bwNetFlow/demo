@@ -15,7 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1569240403994,
+  "id": 1,
+  "iteration": 1571323696071,
   "links": [],
   "panels": [
     {
@@ -34,8 +35,8 @@
         "x": 0,
         "y": 0
       },
-      "hideEmpty": false,
-      "hideZero": false,
+      "hideEmpty": true,
+      "hideZero": true,
       "id": 2,
       "initialZoom": "3",
       "locationData": "countries",
