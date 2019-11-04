@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1571746179775,
+  "iteration": 1572423548765,
   "links": [],
   "panels": [
     {
@@ -29,7 +29,7 @@
       "fontSize": "80%",
       "format": "bps",
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 6,
         "x": 0,
         "y": 0
@@ -73,7 +73,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 6,
         "x": 6,
         "y": 0
@@ -168,7 +168,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 6,
         "x": 12,
         "y": 0
@@ -255,7 +255,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 6,
         "x": 18,
         "y": 0
@@ -342,10 +342,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 12,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 14,
       "legend": {
@@ -432,10 +432,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 10,
+        "h": 12,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 12
       },
       "id": 15,
       "legend": {
@@ -551,7 +551,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -660,7 +659,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -715,7 +713,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"

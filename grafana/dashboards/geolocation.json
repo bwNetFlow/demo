@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1571323696071,
+  "iteration": 1572424442535,
   "links": [],
   "panels": [
     {
@@ -30,7 +29,7 @@
       "decimals": 3,
       "esMetric": "Count",
       "gridPos": {
-        "h": 21,
+        "h": 24,
         "w": 24,
         "x": 0,
         "y": 0
@@ -57,7 +56,7 @@
       },
       "targets": [
         {
-          "expr": "sum by (remotecountry) (irate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[10s])/1024/1024)",
+          "expr": "sum by (remotecountry) (irate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[30s])/1024/1024)",
           "instant": true,
           "legendFormat": "{{ remotecountry }}",
           "refId": "A"

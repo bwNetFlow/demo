@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1569242576066,
+  "iteration": 1572423061405,
   "links": [],
   "panels": [
     {
@@ -26,7 +26,7 @@
       "fill": 10,
       "fillGradient": 10,
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 24,
         "x": 0,
         "y": 0
@@ -116,10 +116,10 @@
       "fill": 10,
       "fillGradient": 10,
       "gridPos": {
-        "h": 10,
+        "h": 12,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 12
       },
       "id": 3,
       "legend": {
@@ -208,7 +208,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
@@ -236,7 +235,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
           "text": "All",
           "value": [
             "$__all"
