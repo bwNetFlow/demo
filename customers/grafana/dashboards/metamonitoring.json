@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 4,
   "links": [],
   "panels": [
     {
@@ -23,6 +22,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "Prometheus",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -31,6 +31,7 @@
         "x": 0,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "alignAsTable": true,
@@ -58,7 +59,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(kafka_messages_total[15s])",
+          "expr": "rate(kafka_messages_total[1m])",
           "interval": "15s",
           "legendFormat": "Flows",
           "refId": "A"
@@ -106,14 +107,14 @@
       }
     }
   ],
-  "schemaVersion": 19,
+  "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {

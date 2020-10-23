@@ -15,105 +15,55 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1572423548765,
+  "iteration": 1572423061405,
   "links": [],
   "panels": [
     {
       "aliasColors": {},
-      "breakPoint": "25%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "other",
-        "threshold": ".03"
-      },
-      "fontSize": "80%",
-      "format": "bps",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 10,
+      "fillGradient": 10,
       "gridPos": {
         "h": 12,
-        "w": 6,
+        "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 17,
-      "interval": null,
+      "id": 9,
       "legend": {
-        "percentage": true,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
         "show": true,
-        "sort": "current",
+        "sort": "avg",
         "sortDesc": true,
+        "total": false,
         "values": true
       },
-      "legendType": "On graph",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "options": {},
-      "pieType": "pie",
-      "strokeWidth": 1,
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (remotecountry) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "expr": "sum by (remoteas) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas!=\"unset\", remoteas=~\"$remoteas\"}[1m]))",
           "instant": false,
-          "legendFormat": "{{ remotecountry }}",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Remote Countries",
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 6,
-        "y": 0
-      },
-      "id": 11,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Incoming",
-          "transform": "negative-Y"
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (direction) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
-          "legendFormat": "{{ direction }}",
+          "legendFormat": "{{ remoteas }}",
           "refId": "A"
         }
       ],
@@ -121,98 +71,10 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Up- and Download",
+      "title": "Datarate by Remote Network",
       "tooltip": {
         "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 12,
-        "y": 0
-      },
-      "id": 12,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": true,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (ipversion) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
-          "legendFormat": "{{ ipversion }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Traffic by IP Version",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -251,103 +113,15 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
+      "fill": 10,
+      "fillGradient": 10,
       "gridPos": {
         "h": 12,
-        "w": 6,
-        "x": 18,
-        "y": 0
-      },
-      "id": 13,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "connected",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (protoname) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
-          "legendFormat": "{{ protoname }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Traffic by Protocol",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 1,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
+        "w": 24,
         "x": 0,
         "y": 12
       },
-      "id": 14,
+      "id": 3,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -367,18 +141,19 @@
       "options": {
         "dataLinks": []
       },
-      "percentage": true,
+      "percentage": false,
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (application) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
-          "legendFormat": "{{ application }}",
+          "expr": "sum by (peer) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\"}[1m]))",
+          "instant": false,
+          "legendFormat": "{{ peer }}",
           "refId": "A"
         }
       ],
@@ -386,10 +161,10 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Traffic by Application",
+      "title": "Datarate by Peering Interface",
       "tooltip": {
         "shared": true,
-        "sort": 0,
+        "sort": 2,
         "value_type": "individual"
       },
       "type": "graph",
@@ -402,97 +177,6 @@
       },
       "yaxes": [
         {
-          "format": "bps",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 2,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 12
-      },
-      "id": 15,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "sort": "avg",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": true,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum by (router) (rate(flow_bits{peer=~\"$peer\",direction=~\"$direction\",ipversion=~\"$ipversion\",protoname=~\"$protoname\",application=~\"$application\", router=~\"$router\", remoteas=~\"$remoteas\", remotecountry=~\"$remotecountry\"}[1m]))",
-          "legendFormat": "{{ router }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Traffic by Router",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
           "format": "bps",
           "label": null,
           "logBase": 1,
@@ -529,7 +213,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, peer)",
         "hide": 0,
         "includeAll": true,
@@ -556,7 +240,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, remoteas)",
         "hide": 0,
         "includeAll": true,
@@ -583,7 +267,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, direction)",
         "hide": 0,
         "includeAll": true,
@@ -610,7 +294,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, ipversion)",
         "hide": 0,
         "includeAll": true,
@@ -637,7 +321,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, protoname)",
         "hide": 0,
         "includeAll": true,
@@ -664,7 +348,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, application)",
         "hide": 0,
         "includeAll": true,
@@ -691,7 +375,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, router)",
         "hide": 0,
         "includeAll": true,
@@ -718,7 +402,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, remotecountry)",
         "hide": 0,
         "includeAll": true,
@@ -758,7 +442,7 @@
     ]
   },
   "timezone": "",
-  "title": "Overview",
-  "uid": "overview",
+  "title": "Transit Analysis",
+  "uid": "transit",
   "version": 1
 }
