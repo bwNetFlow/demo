@@ -32,7 +32,8 @@ services:
     - --log.level=warn
 
   consumer:
-    image: bwnetflow:latest
+    image: bwnetflow/demo:latest
+    build: ./consumer
     env_file:
       - .kafka_auth.env # TODO: follow the instructions in kafka_auth.env
     ports:

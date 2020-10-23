@@ -23,31 +23,6 @@ var (
 	kafkaPass          = flag.String("kafka.pass", "", "Kafka password to authenticate with")
 )
 
-func handleControlMessages() {
-	ctrlChan := kafkaConn.GetConsumerControlMessages()
-	var offsetPerPartition []int64
-	for {
-		ctrlMsg, ok := <-ctrlChan
-		if !ok {
-			kafkaConn.CancelConsumerControlMessages()
-			return
-		}
-		partition := ctrlMsg.Partition
-
-		// extend offsetPerPartition array if needed
-		if len(offsetPerPartition) <= int(partition) {
-			n := int(partition) - len(offsetPerPartition) + 1
-			newArr := make([]int64, n)
-			offsetPerPartition = append(offsetPerPartition, newArr...)
-		}
-
-		offsetDiff := ctrlMsg.Offset - offsetPerPartition[partition]
-		offsetPerPartition[partition] = ctrlMsg.Offset
-
-		promExporter.IncrementCtrl(*kafkaInTopic, partition, offsetDiff)
-	}
-}
-
 // KafkaConn holds the global kafka connection
 var kafkaConn = kafka.Connector{}
 var promExporter = Exporter{}
@@ -88,7 +63,6 @@ func main() {
 	// Establish Kafka Connection
 	kafkaConn.StartConsumer(*kafkaBroker, []string{*kafkaInTopic}, *kafkaConsumerGroup, -1)
 	defer kafkaConn.Close()
-	go handleControlMessages()
 
 	// handle kafka flow messages in foreground
 	for {
