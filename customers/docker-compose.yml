@@ -1,0 +1,51 @@
+---
+version: '3'
+services:
+  consumer:
+    image: ghcr.io/bwnetflow/consumer_prometheus:latest
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    ports:
+      - '8080:8080'
+    env_file:
+      # TODO: When running the demo on our production setup, follow the
+      # instructions in ./kafka_auth.env and `docker-compose up`
+      - .kafka_auth.env
+    environment:
+      # When running the consumer_prometheus in any other context, you'll
+      # probably want to disable auth and encryption here
+      DISABLE_AUTH: 'false'
+      DISABLE_TLS: 'false'
+  prometheus:
+    image: 'prom/prometheus:v2.22.0'
+    ports:
+      - '9090:9090'
+    restart: always
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=2h'
+      - '--web.enable-lifecycle'
+  grafana:
+    image: 'grafana/grafana:7.2.2'
+    ports:
+      - '3000:3000'
+    restart: always
+    volumes:
+      - ./grafana/grafana-provisioning/:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      GF_LOG_LEVEL: 'error'
+      GF_DASHBOARDS_JSON_ENABLED: 'true'
+      GF_INSTALL_PLUGINS: grafana-worldmap-panel,grafana-piechart-panel
+      GF_USER_ALLOW_SIGN_UP: 'false'
+      GF_SECURITY_SECRET_KEY: secretsecret333
+      GF_USERS_LOGIN_HINT: demo
+      GF_USERS_PASSWORD_HINT: demo
+      GF_SECURITY_ADMIN_USER: demo
+      GF_SECURITY_ADMIN_PASSWORD: demo

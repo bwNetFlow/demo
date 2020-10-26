@@ -87,7 +87,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, peer)",
         "hide": 0,
         "includeAll": true,
@@ -114,7 +114,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, remoteas)",
         "hide": 0,
         "includeAll": true,
@@ -141,7 +141,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, direction)",
         "hide": 0,
         "includeAll": true,
@@ -168,7 +168,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, ipversion)",
         "hide": 0,
         "includeAll": true,
@@ -195,7 +195,7 @@
             "$__all"
           ]
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, protoname)",
         "hide": 0,
         "includeAll": true,
@@ -220,7 +220,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, application)",
         "hide": 0,
         "includeAll": true,
@@ -245,7 +245,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "prometheus",
+        "datasource": "Prometheus",
         "definition": "label_values(flow_bits, router)",
         "hide": 0,
         "includeAll": true,

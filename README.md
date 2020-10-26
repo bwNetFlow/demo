@@ -1,21 +1,15 @@
-This is the official bwNetFlow demo and a beta for the official container
-provided to BelWü participants.
+# Demo
 
-1. build or pull the docker image:
+This is the official bwNetFlow demo and should give you an introduction to your project and it's usage.
 
-```
-# pull:
-# TODO: docker pull ????
+This demo is based on containerized applications and it's dependencies. For further information and configuration of the third party applications we use, please refer to their documentation too.  
 
-# build:
-cd consumer
-make # needs a working golang env, will create bwnetflow:latest
-```
+## Structure
 
-2. configure authentication by following the instructions in `kafka_auth.env`
-3. `docker-compose up`
-4. access http://localhost:3000 login as user `demo` with password `demo` and look at dashboards
+This demo is split into two parts.  
+The first part is for **operators** to deploy the whole bwnetFlow Project. The second part is the **customer** specific deployment, which is meant to consume data from an existing deployment of the project.
 
-If you're curious about some internals, Prometheus' web interface is available
-at http://localhost:9090 and the exported data scraped from
-http://localhost:8080/metrics and http://localhost:8080/flowdata respectively.
+## Getting Started
+
+Start for operators: [operators docs](operators/README.md)  
+Start for customers: [customers docs](customers/README.md)
