@@ -66,7 +66,7 @@ services:
       KAFKA_BROKERS: kafka.local:9092
       KAFKA_IN_TOPIC: flows-enriched
       KAFKA_OUT_TOPICPREFIX: flows-customer
-      CONSUMER_GROUP: test-consumer-group
+      KAFKA_CONSUMER_GROUP: test-consumer-group
       DISABLE_AUTH: 'true'
       DISABLE_TLS: 'true'
       AUTH_ANON: 'false'
@@ -90,7 +90,7 @@ services:
       KAFKA_BROKERS: kafka.local:9092
       KAFKA_IN_TOPIC: flows-enriched
       KAFKA_OUT_TOPIC: flows-anon
-      CONSUMER_GROUP: reducer-prod
+      KAFKA_CONSUMER_GROUP: reducer-prod
       DISABLE_AUTH: 'true'
       DISABLE_TLS: 'true'
       AUTH_ANON: 'false'
@@ -130,10 +130,10 @@ To set up a connection to a remote kafka cluster with TLS and auth this could lo
     restart: unless-stopped
     environment:
       KAFKA_BROKERS: kafka.remote:9092
-      KAFKA_TOPIC: flow-topic-to-red
+      KAFKA_TOPIC: flow-topic-to-read
       KAFKA_USER: username
       KAFKA_PASS: ultraSecretPassword
-      CONSUMER_GROUP: your-consumer-group
+      KAFKA_CONSUMER_GROUP: your-consumer-group
 ```
 
 ## Notes

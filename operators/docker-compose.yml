@@ -61,7 +61,7 @@ services:
       KAFKA_BROKERS: kafka:9092
       KAFKA_IN_TOPIC: flows
       KAFKA_OUT_TOPIC: flows-enriched
-      CONSUMER_GROUP: test-consumer-group
+      KAFKA_CONSUMER_GROUP: test-consumer-group
       DISABLE_AUTH: 'true'
       DISABLE_TLS: 'true'
   consumer:
@@ -74,7 +74,7 @@ services:
     environment:
       KAFKA_BROKERS: kafka:9092
       KAFKA_TOPIC: flows-enriched
-      CONSUMER_GROUP: test-consumer-group
+      KAFKA_CONSUMER_GROUP: test-consumer-group
       DISABLE_AUTH: 'true'
       DISABLE_TLS: 'true'
       AUTH_ANON: 'false'
