@@ -1,3 +1,4 @@
+---
 version: '3'
 services:
   consumer:
@@ -7,13 +8,15 @@ services:
     restart: unless-stopped
     ports:
       - '8080:8080'
+    env_file:
+      # TODO: When running the demo on our production setup, follow the
+      # instructions in ./kafka_auth.env and `docker-compose up`
+      - .kafka_auth.env
     environment:
-      KAFKA_BROKERS: kafka.remote:9092
-      KAFKA_TOPIC: flows-enriched
-      CONSUMER_GROUP: test-consumer-group
-      DISABLE_AUTH: 'true'
-      DISABLE_TLS: 'true'
-      AUTH_ANON: 'false'
+      # When running the consumer_prometheus in any other context, you'll
+      # probably want to disable auth and encryption here
+      DISABLE_AUTH: 'false'
+      DISABLE_TLS: 'false'
   prometheus:
     image: 'prom/prometheus:v2.22.0'
     ports:
