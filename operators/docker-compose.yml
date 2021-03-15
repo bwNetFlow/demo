@@ -51,7 +51,7 @@ services:
     entrypoint: '/bin/bash'
     command: >
       -c "sleep 15 ;
-      kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 2 --topic flows ;"
+      kafka-topics.sh --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 2 --topic flows ;"
   enricher:
     image: ghcr.io/bwnetflow/processor_enricher:latest
     stdin_open: true
